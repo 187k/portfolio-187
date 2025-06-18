@@ -30,13 +30,35 @@ class FuturisticPlayer {
         // Специальная обработка для iOS
         if (this.isIOS) {
             this.container.classList.add('ios-device');
-            // Включаем события указателя для видео на iOS
-            this.video.style.pointerEvents = 'auto';
-            // Предотвращаем стандартное поведение касания на iOS
+            
+            // Переменные для отслеживания тача
+            let touchStartX = 0;
+            let touchStartY = 0;
+            let touchStartTime = 0;
+            
+            // Обработка начала касания
             this.video.addEventListener('touchstart', (e) => {
-                e.preventDefault();
-                this.togglePlay();
-            }, { passive: false });
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+                touchStartTime = Date.now();
+            }, { passive: true });
+            
+            // Обработка окончания касания
+            this.video.addEventListener('touchend', (e) => {
+                const touchEndX = e.changedTouches[0].clientX;
+                const touchEndY = e.changedTouches[0].clientY;
+                const touchEndTime = Date.now();
+                
+                // Вычисляем расстояние и время касания
+                const distanceX = Math.abs(touchEndX - touchStartX);
+                const distanceY = Math.abs(touchEndY - touchStartY);
+                const timeDiff = touchEndTime - touchStartTime;
+                
+                // Если движение минимально и время короткое - это тап
+                if (distanceX < 10 && distanceY < 10 && timeDiff < 200) {
+                    this.togglePlay();
+                }
+            }, { passive: true });
         }
         
         this.initializePlayer();

@@ -12,7 +12,7 @@ body {
 .top-section {
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
     overflow: hidden;
 }
 
@@ -29,7 +29,8 @@ body {
     z-index: 1;
 }
 
-.video-background {
+.video-background,
+.video-bg {
     position: absolute;
     top: 0;
     left: 0;
@@ -40,13 +41,6 @@ body {
 }
 
 .video-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    object-fit: cover;
     opacity: 0.7;
 }
 
@@ -56,17 +50,18 @@ body {
     margin-left: 20px;
     margin-top: 20px;
     transition: margin 0.3s ease-out;
+    position: relative;
+    z-index: 2;
 }
 
 /*------------------UPPER TEXT------------------------------*/
 
 .upper-body {
-    margin: 280px auto 150px;
-    text-align: center;
-    max-width: 800px;
-    padding: 0 20px;
     position: relative;
-    top: 20px;
+    z-index: 2;
+    text-align: center;
+    padding: 0 20px;
+    margin: 0 auto;
 }
 
 .upper-body h1 {
@@ -234,7 +229,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: opacity 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 .menu-icon:hover {
@@ -246,34 +241,55 @@ body {
     height: 2px;
     background: white;
     margin: 4px 0;
+    transition: all 0.3s ease;
+}
+
+.menu-icon.active .menu-icon-line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-icon.active .menu-icon-line:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-icon.active .menu-icon-line:nth-child(3) {
+    transform: rotate(-45deg) translate(9px, -9px);
 }
 
 .menu-container {
     position: fixed;
-    top: -100px;
+    top: -100%;
     left: 0;
     width: 100%;
-    backdrop-filter: blur(5px);
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 25px 0;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 10px 0 10px;
     display: flex;
-    justify-content: center;
-    gap: 50px;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    transition: top 0.7s ease;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 999;
 }
 
-.menu-icon:hover ~ .menu-container,
-.menu-container:hover {
+.menu-container.visible {
     top: 0;
 }
 
-.menu-container:hover ~ .menu-icon,
-.menu-icon:not(:hover) ~ .menu-container:hover ~ .menu-icon {
-    opacity: 0;
-    pointer-events: none;
+@media (min-width: 992px) {
+    .menu-container {
+        flex-direction: row;
+        justify-content: center;
+        padding: 40px 0;
+        top: -30%;
+    }
+    
+    .menu-icon:hover ~ .menu-container,
+    .menu-container:hover {
+        top: 0;
+    }
 }
 
 .menu-item {
@@ -285,11 +301,30 @@ body {
     padding: 10px 20px;
     transition: all 0.3s;
     text-transform: uppercase;
+    opacity: 0.8;
+    position: relative;
 }
 
 .menu-item:hover {
     color: #fff;
     text-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+    opacity: 1;
+}
+
+.menu-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: white;
+    transition: all 0.5s ease;
+    transform: translateX(-50%);
+}
+
+.menu-item:hover::after {
+    width: 70%;
 }
 
 /*---------------------SOCIAL MEDIA---------------------------*/
@@ -420,16 +455,26 @@ body {
 @media (min-width: 0px) {
     .logo {
         margin-left: 20px;
+        margin-top: 20px;
+    }
+
+    .top-section {
+        height: calc(100vh - 200px);
+        min-height: 600px;
+    }
+
+    .video-background,
+    .video-bg {
+        height: 100%;
     }
 
     .upper-body {
-        margin: 200px auto;
+        margin: 150px auto;
         max-width: 95%;
-        top: 100px;
     }
     
     .upper-body h1 {
-        font-size: 25px;
+        font-size: 20px;
         width: 100%;
     }
 
@@ -467,16 +512,17 @@ body {
 /* Small devices (smartphones, 576px and up) */
 @media (min-width: 576px) {
     .logo {
-        margin-left: calc(50% - 200px);
+        margin-left: 20px;
     }
 
     .upper-body {
         margin: 180px auto;
         max-width: 90%;
-        top: 100px;
+        top: 15px;
     }
 
     .upper-body h1 {
+        font-size: 22px;
         width: 90%;
     }
 
@@ -489,16 +535,22 @@ body {
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
     .logo {
-        margin-left: calc(50% - 100px);
+        margin-left: 20px;
+    }
+
+    .top-section {
+        height: calc(100vh - 100px);
+        min-height: 700px;
     }
 
     .upper-body {
         margin: 200px auto;
         max-width: 80%;
-        top: 100px;
+        top: 50px;
     }
 
     .upper-body h1 {
+        font-size: 24px;
         width: 80%;
     }
 
@@ -521,7 +573,12 @@ body {
     .upper-body {
         margin: 200px auto;
         max-width: 70%;
-        top: 100px;
+        top: 50px;
+    }
+
+    .upper-body h1 {
+        font-size: 25px;
+        width: 100%;
     }
 
     .video-grid {
@@ -536,6 +593,11 @@ body {
 @media (min-width: 1200px) {
     .logo {
         margin-left: calc(50% - 60px);
+    }
+
+    .top-section {
+        height: calc(100vh - 50px);
+        min-height: 800px;
     }
 
     .upper-body {
@@ -792,8 +854,63 @@ body {
 }
 
 @media (max-width: 768px) {
-    .futuristic-player.small-vert {
-        max-width: 80%;
+    .player-controls {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 15px;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: linear-gradient(to top, 
+            rgba(0, 0, 0, 0.9) 0%,
+            rgba(0, 0, 0, 0.7) 60%,
+            rgba(0, 0, 0, 0) 100%
+        );
+    }
+
+    .control-button {
+        width: 35px;
+        height: 35px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: none;
+        border: none;
+    }
+
+    .volume-toggle {
+        background: rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+    }
+
+    .progress-bar {
+        flex-grow: 1;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 2px;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .time-display {
+        font-size: 12px;
+        color: white;
+        margin: 0 5px;
+    }
+
+    .volume-control {
+        display: none;
+    }
+
+    .futuristic-player {
+        margin-bottom: 20px;
     }
 }
 
@@ -848,6 +965,43 @@ video {
         z-index: 1;
         -webkit-transform: translateZ(0);
         transform: translateZ(0);
+    }
+}
+
+/* Дополнительные фиксы для iOS */
+@supports (-webkit-touch-callout: none) {
+    .video-background,
+    .video-bg {
+        position: fixed;
+        height: 100vh;
+        /* Фикс для iOS 15+ */
+        height: -webkit-fill-available;
+    }
+}
+
+/* iOS specific fixes */
+@supports (-webkit-touch-callout: none) {
+    .top-section {
+        height: calc(var(--vh, 1vh) * 100 - 200px);
+    }
+
+    .video-background,
+    .video-bg {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+    }
+
+    @media (min-width: 768px) {
+        .top-section {
+            height: calc(var(--vh, 1vh) * 100 - 100px);
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .top-section {
+            height: calc(var(--vh, 1vh) * 100 - 50px);
+        }
     }
 }
 

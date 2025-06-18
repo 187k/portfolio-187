@@ -577,6 +577,9 @@ body {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.1);
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    outline: none;
 }
 
 .futuristic-player:hover {
@@ -591,6 +594,7 @@ body {
     border-radius: 12px;
     background: rgba(0, 0, 0, 0.3);
     object-fit: contain;
+    pointer-events: none;
 }
 
 /* Стили для полноэкранного режима */
@@ -668,6 +672,7 @@ body {
     display: flex;
     align-items: center;
     gap: 15px;
+    pointer-events: auto;
 }
 
 .futuristic-player:hover .player-controls {
@@ -789,6 +794,60 @@ body {
 @media (max-width: 768px) {
     .futuristic-player.small-vert {
         max-width: 80%;
+    }
+}
+
+/* iOS video fixes */
+video::-webkit-media-controls {
+    display: none !important;
+}
+
+video::-webkit-media-controls-panel {
+    display: none !important;
+    -webkit-appearance: none;
+}
+
+video::-webkit-media-controls-play-button {
+    display: none !important;
+    -webkit-appearance: none;
+}
+
+video::-webkit-media-controls-start-playback-button {
+    display: none !important;
+    -webkit-appearance: none;
+}
+
+video {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    outline: none !important;
+}
+
+/* Prevent iOS from adding its own controls */
+.futuristic-player {
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    outline: none;
+}
+
+.futuristic-player video {
+    pointer-events: none;
+}
+
+/* Only enable pointer events for controls */
+.player-controls {
+    pointer-events: auto;
+}
+
+@supports (-webkit-touch-callout: none) {
+    /* iOS-specific styles */
+    .video-background,
+    .video-bg,
+    .video-item video {
+        position: relative;
+        z-index: 1;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
     }
 }
 

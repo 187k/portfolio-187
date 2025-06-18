@@ -14,6 +14,7 @@ class FuturisticPlayer {
         
         this.isPlaying = false;
         this.isMuted = false;
+        this.isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
         
         // Устанавливаем начальную громкость в 1%
         this.video.volume = 0.15;
@@ -25,6 +26,18 @@ class FuturisticPlayer {
                 this.container.classList.add('vertical-video');
             }
         });
+        
+        // Специальная обработка для iOS
+        if (this.isIOS) {
+            this.container.classList.add('ios-device');
+            // Включаем события указателя для видео на iOS
+            this.video.style.pointerEvents = 'auto';
+            // Предотвращаем стандартное поведение касания на iOS
+            this.video.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.togglePlay();
+            }, { passive: false });
+        }
         
         this.initializePlayer();
     }
@@ -168,6 +181,11 @@ class FuturisticPlayer {
 
 // Initialize all video players on the page
 document.addEventListener('DOMContentLoaded', () => {
+    // Добавляем класс для iOS устройств
+    if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+        document.body.classList.add('ios-device');
+    }
+    
     const players = document.querySelectorAll('.futuristic-player');
     players.forEach(player => new FuturisticPlayer(player));
 }); 

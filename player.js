@@ -11,6 +11,19 @@ class FuturisticPlayer {
         this.volumeLevel = container.querySelector('.volume-level');
         this.timeDisplay = container.querySelector('.time-display');
         this.fullscreenButton = container.querySelector('.fullscreen-toggle');
+        this.qualityButton = container.querySelector('.quality-toggle');
+        this.qualityLabel = this.qualityButton ? this.qualityButton.querySelector('.quality-label') : null;
+        
+        // Store available qualities
+        this.qualities = {};
+        this.video.querySelectorAll('source').forEach(source => {
+            const quality = source.getAttribute('data-quality');
+            if (quality) {
+                this.qualities[quality] = source.src;
+            }
+        });
+        
+        this.currentQuality = '720'; // Default quality
         
         this.isPlaying = false;
         this.isMuted = false;
@@ -65,6 +78,9 @@ class FuturisticPlayer {
     }
     
     initializePlayer() {
+        // Set initial quality to 720p
+        this.setQuality('720');
+        
         // Play/Pause
         this.playButton.addEventListener('click', () => this.togglePlay());
         this.video.addEventListener('click', () => this.togglePlay());
@@ -84,6 +100,11 @@ class FuturisticPlayer {
         
         // Volume
         this.volumeButton.addEventListener('click', () => this.toggleMute());
+        
+        // Quality toggle
+        if (this.qualityButton) {
+            this.qualityButton.addEventListener('click', () => this.toggleQuality());
+        }
         
         // Улучшенное управление громкостью
         let isVolumeDragging = false;
@@ -182,6 +203,38 @@ class FuturisticPlayer {
         return `${minutes}:${seconds.toString().padStart(2, '0')}`;
     }
     
+    toggleQuality() {
+        // Toggle between 720p and 1080p
+        const newQuality = this.currentQuality === '720' ? '1080' : '720';
+        this.setQuality(newQuality);
+    }
+
+    setQuality(quality) {
+        if (this.qualities[quality] && this.currentQuality !== quality) {
+            const wasPlaying = !this.video.paused;
+            const currentTime = this.video.currentTime;
+            
+            // Update current quality
+            this.currentQuality = quality;
+            
+            // Update source
+            this.video.src = this.qualities[quality];
+            
+            // Update quality label
+            if (this.qualityLabel) {
+                this.qualityLabel.textContent = quality + 'p';
+            }
+            
+            // Restore playback state
+            this.video.addEventListener('loadedmetadata', () => {
+                this.video.currentTime = currentTime;
+                if (wasPlaying) {
+                    this.video.play();
+                }
+            }, { once: true });
+        }
+    }
+
     toggleFullscreen() {
         if (!document.fullscreenElement) {
             this.container.requestFullscreen().then(() => {

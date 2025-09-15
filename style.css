@@ -9,6 +9,17 @@ body {
     margin: 0;
 }
 
+.text-paragraph {
+    color: white;
+    font-size: 4em;
+    text-align: left;
+    margin-left: 80px;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.9;
+}
+
 .top-section {
     position: relative;
     width: 100%;
@@ -1066,6 +1077,7 @@ video {
         grid-template-columns: repeat(6, 1fr);
         gap: 12px;
     }
+
 }
 
 @media (max-width: 992px) {
@@ -1079,6 +1091,10 @@ video {
     .skills-grid {
         grid-template-columns: repeat(6, 1fr);
         gap: 8px;
+    }
+    .text-paragraph {
+        text-align: center;
+        margin-left: auto;
     }
 }
 
@@ -1148,6 +1164,14 @@ video {
     pointer-events: none;
 }
 
+/* Individual icon sizes 
+.skill-card.dv .skill-icon { width: 80%; height: 80%; }
+.skill-card.bl .skill-icon { width: 70%; height: 70%; }
+.skill-card.md .skill-icon { width: 90%; height: 90%; }
+.skill-card.c4d .skill-icon { width: 90%; height: 90%; }
+.skill-card.ue .skill-icon { width: 78%; height: 78%; }
+*/
+
 
 /* Brand-ish accent variants */
 .skill-card.ae .skill-glow {
@@ -1174,6 +1198,44 @@ video {
     background: radial-gradient(60% 60% at 50% 0%, rgba(255, 100, 50, 0.25), rgba(255, 100, 50, 0) 70%);
 }
 
+/* New skill card colors 
+.skill-card.lr .skill-glow {
+    background: radial-gradient(60% 60% at 50% 0%, rgba(0, 200, 255, 0.25), rgba(0, 200, 255, 0) 70%);
+}
+
+.skill-card.id .skill-glow {
+    background: radial-gradient(60% 60% at 50% 0%, rgba(255, 150, 0, 0.25), rgba(255, 150, 0, 0) 70%);
+}
+
+.skill-card.dv .skill-glow {
+    background: radial-gradient(60% 60% at 50% 0%, rgba(255, 0, 100, 0.25), rgba(255, 0, 100, 0) 70%);
+}
+
+.skill-card.fg .skill-glow {
+    background: radial-gradient(60% 60% at 50% 0%, rgba(100, 200, 255, 0.25), rgba(100, 200, 255, 0) 70%);
+}
+
+.skill-card.bl .skill-glow {
+    background: radial-gradient(60% 60% at 50% 0%, rgba(255, 200, 0, 0.25), rgba(255, 200, 0, 0) 70%);
+}
+
+.skill-card.td .skill-glow {
+    background: radial-gradient(60% 60% at 50% 0%, rgba(150, 255, 100, 0.25), rgba(150, 255, 100, 0) 70%);
+}
+
+.skill-card.md .skill-glow {
+    background: radial-gradient(60% 60% at 50% 0%, rgba(255, 100, 200, 0.25), rgba(255, 100, 200, 0) 70%);
+}
+
+.skill-card.c4d .skill-glow {
+    background: radial-gradient(60% 60% at 50% 0%, rgba(0, 255, 150, 0.25), rgba(0, 255, 150, 0) 70%);
+}
+
+.skill-card.ue .skill-glow {
+    background: radial-gradient(60% 60% at 50% 0%, rgba(100, 100, 255, 0.25), rgba(100, 100, 255, 0) 70%);
+}
+*/
+
 /* Optional subtle border glow per variant */
 .skill-card.ae:hover {
     box-shadow: 0 12px 40px rgba(167, 121, 255, 0.18);
@@ -1199,6 +1261,43 @@ video {
     box-shadow: 0 12px 40px rgba(255, 100, 50, 0.18);
 }
 
+/* New skill card hover effects 
+.skill-card.lr:hover {
+    box-shadow: 0 12px 40px rgba(0, 200, 255, 0.18);
+}
+
+.skill-card.id:hover {
+    box-shadow: 0 12px 40px rgba(255, 1, 141, 0.18);
+}
+
+.skill-card.dv:hover {
+    box-shadow: 0 12px 40px rgba(255, 0, 100, 0.18);
+}
+
+.skill-card.fg:hover {
+    box-shadow: 0 12px 40px rgba(100, 200, 255, 0.18);
+}
+
+.skill-card.bl:hover {
+    box-shadow: 0 12px 40px rgba(255, 200, 0, 0.18);
+}
+
+.skill-card.td:hover {
+    box-shadow: 0 12px 40px rgba(150, 255, 100, 0.18);
+}
+
+.skill-card.md:hover {
+    box-shadow: 0 12px 40px rgba(255, 200, 0, 0.15);
+}
+
+.skill-card.c4d:hover {
+    box-shadow: 0 12px 40px rgba(0, 255, 150, 0.18);
+}
+
+.skill-card.ue:hover {
+    box-shadow: 0 12px 40px rgba(100, 100, 255, 0.18);
+}
+*/
 
 /* Skills tooltips */
 .skill-tooltip {
@@ -1267,4 +1366,16 @@ video {
 .skill-card.sv .skill-tooltip-inner { box-shadow: 0 8px 22px rgba(0, 200, 100, 0.15), inset 0 0 0 1px rgba(0,200,100,0.18); }
 .skill-card.ps .skill-tooltip-inner { box-shadow: 0 8px 22px rgba(0, 168, 255, 0.15), inset 0 0 0 1px rgba(0,168,255,0.18); }
 .skill-card.ai .skill-tooltip-inner { box-shadow: 0 8px 22px rgba(255, 100, 50, 0.15), inset 0 0 0 1px rgba(255,100,50,0.18); }
+
+/* New skill card tooltip colors 
+.skill-card.lr .skill-tooltip-inner { box-shadow: 0 8px 22px rgba(0, 200, 255, 0.15), inset 0 0 0 1px rgba(0,200,255,0.18); }
+.skill-card.id .skill-tooltip-inner { box-shadow: 0 8px 22px rgba(255, 1, 141, 0.18), inset 0 0 0 1px rgba(255, 1, 141, 0.18); }
+.skill-card.dv .skill-tooltip-inner { box-shadow: 0 8px 22px rgba(255, 0, 100, 0.15), inset 0 0 0 1px rgba(255,0,100,0.18); }
+.skill-card.fg .skill-tooltip-inner { box-shadow: 0 8px 22px rgba(100, 200, 255, 0.15), inset 0 0 0 1px rgba(100,200,255,0.18); }
+.skill-card.bl .skill-tooltip-inner { box-shadow: 0 8px 22px rgba(255, 200, 0, 0.15), inset 0 0 0 1px rgba(255,200,0,0.18); }
+.skill-card.td .skill-tooltip-inner { box-shadow: 0 8px 22px rgba(150, 255, 100, 0.15), inset 0 0 0 1px rgba(150,255,100,0.18); }
+.skill-card.md .skill-tooltip-inner { box-shadow: 0 8px 22px rgba(255, 200, 0, 0.15), inset 0 0 0 1px rgba(255, 200, 0, 0.15); }
+.skill-card.c4d .skill-tooltip-inner { box-shadow: 0 8px 22px rgba(0, 255, 150, 0.15), inset 0 0 0 1px rgba(0,255,150,0.18); }
+.skill-card.ue .skill-tooltip-inner { box-shadow: 0 8px 22px rgba(100, 100, 255, 0.15), inset 0 0 0 1px rgba(100,100,255,0.18); }
+*/
 

@@ -5,18 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>187vxd</title>
     <link rel="icon" href="img/site.png" type="image/x-icon">
+    
+    <!-- Resource hints for external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://assets.mixkit.co">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <div class="top-section">
-        <video id="background" autoplay muted loop playsinline webkit-playsinline x-webkit-airplay="deny" class="video-background">
+        <video id="background" autoplay muted loop playsinline webkit-playsinline x-webkit-airplay="deny" class="video-background" preload="auto">
             <source src="media/background187-con.mp4" type="video/mp4">
         </video>
 
-        <video autoplay muted loop playsinline webkit-playsinline x-webkit-airplay="deny" class="video-bg">
+        <video autoplay muted loop playsinline webkit-playsinline x-webkit-airplay="deny" class="video-bg" preload="auto">
             <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-digital-grid-538-large.mp4" type="video/mp4">
         </video>
         
@@ -34,7 +42,7 @@
 
         <div class="logo">
             <a href="index.html">
-                <img width="120" src="img/logo.png"/>
+                <img width="120" src="img/logo.png" loading="eager" alt="187vxd logo"/>
             </a>
         </div>
 
@@ -45,23 +53,23 @@
 
     <div class="video-grid">
         <div class="video-item" onclick="window.location.href='vol1.html'">
-            <video autoplay muted loop playsinline webkit-playsinline x-webkit-airplay="deny">
-                <source src="media/Grid video/Comp1-1.mp4" type="video/mp4">
+            <video autoplay muted loop playsinline webkit-playsinline x-webkit-airplay="deny" preload="none" data-src="media/Grid video/Comp1-1.mp4" class="lazy-video">
+                <source data-src="media/Grid video/Comp1-1.mp4" type="video/mp4">
             </video>
         </div>
         <div class="video-item" onclick="window.location.href='vol2.html'">
-            <video autoplay muted loop playsinline webkit-playsinline x-webkit-airplay="deny">
-                <source src="media/Grid video/Comp2-1.mp4" type="video/mp4">
+            <video autoplay muted loop playsinline webkit-playsinline x-webkit-airplay="deny" preload="none" data-src="media/Grid video/Comp2-1.mp4" class="lazy-video">
+                <source data-src="media/Grid video/Comp2-1.mp4" type="video/mp4">
             </video>
         </div>  
         <div class="video-item" onclick="window.location.href='music.html'">
-            <video autoplay muted loop playsinline webkit-playsinline x-webkit-airplay="deny">
-                <source src="media/Grid video/Comp3-1.mp4" type="video/mp4">
+            <video autoplay muted loop playsinline webkit-playsinline x-webkit-airplay="deny" preload="none" data-src="media/Grid video/Comp3-1.mp4" class="lazy-video">
+                <source data-src="media/Grid video/Comp3-1.mp4" type="video/mp4">
             </video>
         </div>
         <div class="video-item" onclick="window.location.href='projects.html'">
-            <video autoplay muted loop playsinline webkit-playsinline x-webkit-airplay="deny">
-                <source src="media/Grid video/Comp4-1.mp4" type="video/mp4">
+            <video autoplay muted loop playsinline webkit-playsinline x-webkit-airplay="deny" preload="none" data-src="media/Grid video/Comp4-1.mp4" class="lazy-video">
+                <source data-src="media/Grid video/Comp4-1.mp4" type="video/mp4">
             </video>
         </div>
     </div>
@@ -69,13 +77,13 @@
     <div class="video-grid">
         <div class="video-item small-video">
             <p class="video-item-title">TEASER</p>
-            <video autoplay muted loop playsinline webkit-playsinline x-webkit-airplay="deny">
-                <source src="media/Grid video/Promo-conv.mp4" type="video/mp4">
+            <video autoplay muted loop playsinline webkit-playsinline x-webkit-airplay="deny" preload="none" data-src="media/Grid video/Promo-conv.mp4" class="lazy-video">
+                <source data-src="media/Grid video/Promo-conv.mp4" type="video/mp4">
             </video>
         </div>
         <div class="image-item">
             <p class="video-item-title">SHUTDOWN POSTER</p>
-            <img src="media/img/shutdown2-conv.png" alt="1" width="700">
+            <img src="media/img/shutdown2-conv.png" alt="Shutdown Poster" width="700" loading="lazy">
         </div>
     </div>
 
@@ -96,7 +104,7 @@
         <div class="skills-grid">
             <div class="skill-card ae" title="Adobe After Effects">
                 <div class="skill-glow"></div>
-                <img class="skill-icon" src="img/icon/after-effects.svg" alt="After Effects">
+                <img class="skill-icon" src="img/icon/after-effects.svg" alt="After Effects" loading="lazy">
                 <div class="skill-tooltip">
                     <div class="skill-tooltip-inner">
                         <span class="skill-tooltip-title">After Effects</span>
@@ -106,7 +114,7 @@
             </div>
             <div class="skill-card pr" title="Adobe Premiere Pro">
                 <div class="skill-glow"></div>
-                <img class="skill-icon" src="img/icon/premier-pro.svg" alt="Premiere Pro">
+                <img class="skill-icon" src="img/icon/premier-pro.svg" alt="Premiere Pro" loading="lazy">
                 <div class="skill-tooltip">
                     <div class="skill-tooltip-inner">
                         <span class="skill-tooltip-title">Premiere Pro</span>
@@ -117,7 +125,7 @@
             
             <div class="skill-card me" title="Adobe Media Encoder">
                 <div class="skill-glow"></div>
-                <img class="skill-icon" src="img/icon/media-encoder.svg" alt="Media Encoder">
+                <img class="skill-icon" src="img/icon/media-encoder.svg" alt="Media Encoder" loading="lazy">
                 <div class="skill-tooltip">
                     <div class="skill-tooltip-inner">
                         <span class="skill-tooltip-title">Media Encoder</span>
@@ -127,7 +135,7 @@
             </div>
             <div class="skill-card sv" title="Sony Vegas Pro">
                 <div class="skill-glow"></div>
-                <img class="skill-icon" src="img/icon/sony-vegas.svg" alt="Sony Vegas">
+                <img class="skill-icon" src="img/icon/sony-vegas.svg" alt="Sony Vegas" loading="lazy">
                 <div class="skill-tooltip">
                     <div class="skill-tooltip-inner">
                         <span class="skill-tooltip-title">Sony Vegas</span>
@@ -137,7 +145,7 @@
             </div>
             <div class="skill-card ps" title="Adobe Photoshop">
                 <div class="skill-glow"></div>
-                <img class="skill-icon" src="img/icon/photoshop.svg" alt="Photoshop">
+                <img class="skill-icon" src="img/icon/photoshop.svg" alt="Photoshop" loading="lazy">
                 <div class="skill-tooltip">
                     <div class="skill-tooltip-inner">
                         <span class="skill-tooltip-title">Photoshop</span>
@@ -147,7 +155,7 @@
             </div>
             <div class="skill-card ai" title="Adobe Illustrator">
                 <div class="skill-glow"></div>
-                <img class="skill-icon" src="img/icon/illustrator.svg" alt="Illustrator">
+                <img class="skill-icon" src="img/icon/illustrator.svg" alt="Illustrator" loading="lazy">
                 <div class="skill-tooltip">
                     <div class="skill-tooltip-inner">
                         <span class="skill-tooltip-title">Illustrator</span>

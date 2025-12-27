@@ -1,21 +1,23 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Создаем IntersectionObserver
+    // Создаем IntersectionObserver для lazy loading видео
     const videoObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            // Получаем video элемент
             const video = entry.target;
             
-            // Если элемент входит в область видимости
             if (entry.isIntersecting) {
-                // Получаем все source элементы
+                // Получаем URL из data-src атрибута видео или source элементов
+                const videoDataSrc = video.dataset.src;
                 const sources = video.getElementsByTagName('source');
                 
-                // Для каждого source элемента
+                // Если есть data-src на самом video элементе
+                if (videoDataSrc && !video.src) {
+                    video.src = videoDataSrc;
+                }
+                
+                // Обрабатываем source элементы
                 for (let source of sources) {
-                    // Получаем оригинальный URL из data-атрибута
-                    const url = source.dataset.src;
-                    if (url) {
-                        // Устанавливаем src только когда элемент виден
+                    const url = source.dataset.src || source.getAttribute('data-src');
+                    if (url && !source.src) {
                         source.src = url;
                     }
                 }
@@ -23,30 +25,44 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Загружаем видео
                 video.load();
                 
+                // Для autoplay видео начинаем воспроизведение после загрузки
+                if (video.hasAttribute('autoplay')) {
+                    video.play().catch(err => {
+                        console.log('Autoplay prevented:', err);
+                    });
+                }
+                
                 // Прекращаем наблюдение после загрузки
                 videoObserver.unobserve(video);
             }
         });
     }, {
-        // Настройки
-        rootMargin: '50px 0px', // Загружать видео когда оно находится в пределах 50px от области видимости
-        threshold: 0.1 // Загружать когда хотя бы 10% видео видно
+        rootMargin: '100px 0px', // Загружать видео когда оно находится в пределах 100px от области видимости
+        threshold: 0.01 // Загружать когда хотя бы 1% видео видно
     });
 
-    // Находим все video элементы
-    const lazyVideos = document.querySelectorAll('.futuristic-player video');
+    // Находим все video элементы с lazy loading (класс lazy-video или внутри .futuristic-player)
+    const lazyVideos = document.querySelectorAll('.lazy-video, .futuristic-player video');
 
     // Для каждого видео
     lazyVideos.forEach(video => {
+        // Сохраняем оригинальный src в data-src если его еще нет
+        if (video.src && !video.dataset.src) {
+            video.dataset.src = video.src;
+            video.src = '';
+        }
+        
         // Получаем все source элементы
         const sources = video.getElementsByTagName('source');
         
         // Для каждого source элемента
         for (let source of sources) {
-            // Сохраняем оригинальный URL в data-атрибуте
-            source.dataset.src = source.src;
-            // Очищаем src
-            source.src = '';
+            // Сохраняем оригинальный URL в data-атрибуте если его еще нет
+            if (source.src && !source.dataset.src) {
+                source.dataset.src = source.src;
+                // Очищаем src для lazy loading
+                source.src = '';
+            }
         }
 
         // Начинаем наблюдение за видео

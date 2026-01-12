@@ -78,9 +78,11 @@ body {
 .upper-body h1 {
     font-family: 'Roboto', sans-serif;
     font-size: 25px;
+    max-width: 900px;
     width: 100%;
     word-spacing: 5px;
     margin: 0 auto;
+    text-align: center;
     text-shadow: 0 4px 6px rgba(0, 0, 0, 0.5),
                  0 6px 10px rgba(0, 0, 0, 0.3);
 }
@@ -107,7 +109,7 @@ body {
     row-gap: 40px;
     max-width: 95%;
     margin: auto;
-    margin-bottom: 100px;
+    margin-bottom: 30px;
     align-items: start;
     justify-content: center;
     min-height: 100%;
@@ -195,7 +197,9 @@ body {
 
 .image-item {
     position: relative;
-    overflow: visible;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: all 0.4s ease-out;
     transform: scale(1);
     z-index: 1;
@@ -206,6 +210,7 @@ body {
     width: 100%;
     height: auto;
     display: block;
+    border-radius: 12px;
     transition: transform 0.4s ease-out;
 }
 
@@ -480,13 +485,15 @@ body {
     }
 
     .upper-body {
-        margin: 150px auto;
+        margin: 200px auto;
         max-width: 95%;
     }
     
     .upper-body h1 {
-        font-size: 20px;
+        font-size: 16px;
+        max-width: 90%;
         width: 100%;
+        margin: 0 auto;
     }
 
     .video-grid {
@@ -527,14 +534,16 @@ body {
     }
 
     .upper-body {
-        margin: 180px auto;
+        margin: 220px auto;
         max-width: 90%;
         top: 15px;
     }
 
     .upper-body h1 {
-        font-size: 22px;
-        width: 90%;
+        font-size: 18px;
+        max-width: 85%;
+        width: 100%;
+        margin: 0 auto;
     }
 
     .social-media {
@@ -561,8 +570,10 @@ body {
     }
 
     .upper-body h1 {
-        font-size: 24px;
-        width: 80%;
+        font-size: 20px;
+        max-width: 80%;
+        width: 100%;
+        margin: 0 auto;
     }
 
     .video-grid {
@@ -588,8 +599,10 @@ body {
     }
 
     .upper-body h1 {
-        font-size: 25px;
+        font-size: 22px;
+        max-width: 75%;
         width: 100%;
+        margin: 0 auto;
     }
 
     .video-grid {
@@ -618,7 +631,10 @@ body {
     }
 
     .upper-body h1 {
-        width: 70%;
+        font-size: 24px;
+        max-width: 70%;
+        width: 100%;
+        margin: 0 auto;
     }
 }
 
@@ -635,7 +651,10 @@ body {
     }
 
     .upper-body h1 {
-        width: 55%;
+        font-size: 25px;
+        max-width: 65%;
+        width: 100%;
+        margin: 0 auto;
     }
 }
 
@@ -1379,3 +1398,30 @@ video {
 .skill-card.ue .skill-tooltip-inner { box-shadow: 0 8px 22px rgba(100, 100, 255, 0.15), inset 0 0 0 1px rgba(100,100,255,0.18); }
 */
 
+
+/* ==================== Project Logo Video ==================== */
+.project-logo-video {
+    width: 50%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Responsive adjustments for project logo video */
+@media (max-width: 1024px) {
+    .project-logo-video {
+        width: 60%;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-logo-video {
+        width: 75%;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-logo-video {
+        width: 90%;
+    }
+}

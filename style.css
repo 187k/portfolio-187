@@ -87,6 +87,50 @@ body {
                  0 6px 10px rgba(0, 0, 0, 0.3);
 }
 
+.hero-subtitle {
+    margin: 18px auto 0;
+    max-width: 720px;
+    text-align: center;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.8px;
+}
+
+.hero-actions {
+    margin-top: 28px;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.hero-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 22px;
+    border-radius: 999px;
+    text-decoration: none;
+    color: #0a0a0a;
+    background: #ffffff;
+    border: 1px solid #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.hero-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.25);
+}
+
+.hero-button.hero-button-outline {
+    background: transparent;
+    color: #ffffff;
+}
+
 /*---------------------CONTAINER VIDEO GRID---------------------------*/
 
 /*size video promo*/
@@ -117,12 +161,16 @@ body {
 
 .video-item {
     position: relative;
+    display: block;
     overflow: hidden;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: all 0.4s ease-out;
     transform: scale(1);
     z-index: 1;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
 }
 
 .video-item video {
@@ -197,6 +245,7 @@ body {
 
 .image-item {
     position: relative;
+    display: block;
     overflow: hidden;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -204,6 +253,34 @@ body {
     transform: scale(1);
     z-index: 1;
     cursor: pointer;
+}
+
+.case-meta {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    padding: 14px 16px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0));
+}
+
+.case-meta h3 {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.case-meta p {
+    margin: 4px 0 0;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    text-transform: none;
 }
 
 .image-item img {
@@ -496,6 +573,11 @@ body {
         margin: 0 auto;
     }
 
+    .hero-subtitle {
+        font-size: 13px;
+        max-width: 85%;
+    }
+
     .video-grid {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
@@ -507,6 +589,10 @@ body {
     }
 
     .video-grid > div {
+        width: 100%;
+    }
+
+    .video-grid > a {
         width: 100%;
     }
 
@@ -546,6 +632,10 @@ body {
         margin: 0 auto;
     }
 
+    .hero-subtitle {
+        font-size: 14px;
+    }
+
     .social-media {
         margin: 0 40px 150px;
         justify-content: flex-start;
@@ -576,6 +666,10 @@ body {
         margin: 0 auto;
     }
 
+    .hero-subtitle {
+        font-size: 15px;
+    }
+
     .video-grid {
         max-width: 90%;
         row-gap: 50px;
@@ -603,6 +697,11 @@ body {
         max-width: 75%;
         width: 100%;
         margin: 0 auto;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+        max-width: 70%;
     }
 
     .video-grid {
@@ -636,6 +735,10 @@ body {
         width: 100%;
         margin: 0 auto;
     }
+
+    .hero-subtitle {
+        max-width: 64%;
+    }
 }
 
 /* XX-Large devices (larger desktops, 1400px and up) */
@@ -655,6 +758,10 @@ body {
         max-width: 65%;
         width: 100%;
         margin: 0 auto;
+    }
+
+    .hero-subtitle {
+        max-width: 58%;
     }
 }
 
@@ -913,6 +1020,10 @@ body {
 }
 
 @media (max-width: 768px) {
+    .video-bg {
+        display: none;
+    }
+
     .player-controls {
         position: absolute;
         bottom: 0;
@@ -1070,7 +1181,7 @@ video {
 .skills-section {
     max-width: 600px;
     margin: 0 20px 120px;
-    padding: 100 20px;
+    padding: 100px 20px;
 }
 
 @media (min-width: 576px) {

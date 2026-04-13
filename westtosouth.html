@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<html lang="ru">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="style.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 <body>
 
@@ -44,31 +43,31 @@
     <div style="display: flex; justify-content: center; margin-bottom: 40px;">
         <div>
             <p class="video-item-title"></p>
-            <video class="project-logo-video" autoplay muted loop playsinline webkit-playsinline x-webkit-airplay="deny">
+            <video class="project-logo-video js-preview-video" muted loop playsinline webkit-playsinline x-webkit-airplay="deny" preload="metadata">
                 <source src="media/project/West To South/Logo West To South Bg Black.mp4" type="video/mp4">
             </video>
         </div>
     </div>
 
     <div class="video-grid">
-        <div class="image-item">
-            <img src="media/project/West To South/Portfolio2.png" alt="1" width="700">
+        <div class="image-item" data-lightbox="true">
+            <img src="media/project/West To South/Portfolio2.png" alt="West To South poster variation 1" width="700" loading="lazy" decoding="async">
         </div>
-        <div class="image-item">
-            <img src="media/project/West To South/Portfolio3.png" alt="1" width="700">
+        <div class="image-item" data-lightbox="true">
+            <img src="media/project/West To South/Portfolio3.png" alt="West To South poster variation 2" width="700" loading="lazy" decoding="async">
         </div>
     </div> 
 
      <div class="video-grid">
         <div class="video-item small-video">
             <p class="video-item-title"></p>
-            <video autoplay muted loop playsinline webkit-playsinline x-webkit-airplay="deny">
+            <video class="js-preview-video" muted loop playsinline webkit-playsinline x-webkit-airplay="deny" preload="metadata">
                 <source src="media/project/West To South/Portfolio1.mp4" type="video/mp4">
             </video>
         </div>
         <div class="video-item small-video">
             <p class="video-item-title"></p>
-            <video autoplay muted loop playsinline webkit-playsinline x-webkit-airplay="deny">
+            <video class="js-preview-video" muted loop playsinline webkit-playsinline x-webkit-airplay="deny" preload="metadata">
                 <source src="media/project/West To South/Storys.mp4" type="video/mp4">
             </video>
         </div>
@@ -82,6 +81,6 @@
     </div>
 
     <script src="script.js" defer></script>
-    <script src="lazyload.js"></script>
+    <script src="lazyload.js" defer></script>
 </body>
 </html>

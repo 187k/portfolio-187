@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="style.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 <body>
 
@@ -31,9 +30,13 @@
         </div>
     
     <div class="video-grid" style="margin-top: 50px;">
-        <div class="image-item" onclick="window.location.href='westtosouth.html'">
-            <img src="media/project/Grid-images/project-grid1.jpg" alt="Project 1">
-        </div>
+        <a class="image-item case-card project-link" href="westtosouth.html" aria-label="Open West To South case">
+            <img src="media/project/Grid-images/project-grid1.jpg" alt="West To South project preview" loading="lazy" decoding="async">
+            <div class="case-meta">
+                <h3>West To South</h3>
+                <p>Motion + Graphic design · Club branding</p>
+            </div>
+        </a>
         <!-- <div class="video-item" onclick="window.location.href='vol2.html'">
             <video autoplay muted loop playsinline webkit-playsinline x-webkit-airplay="deny">
                 <source src="media/Grid video/Comp2-1.mp4" type="video/mp4">
@@ -42,6 +45,6 @@
     </div>
 
     <script src="script.js" defer></script>
-    <script src="lazyload.js"></script>
+    <script src="lazyload.js" defer></script>
 </body>
 </html>

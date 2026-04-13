@@ -78,8 +78,9 @@ class FuturisticPlayer {
     }
     
     initializePlayer() {
-        // Set initial quality to 720p
-        this.setQuality('720');
+        if (this.qualityLabel) {
+            this.qualityLabel.textContent = '720p';
+        }
         
         // Play/Pause
         this.playButton.addEventListener('click', () => this.togglePlay());
@@ -155,11 +156,20 @@ class FuturisticPlayer {
     }
     
     updateProgress() {
+        if (!Number.isFinite(this.video.duration) || this.video.duration <= 0) {
+            this.progress.style.width = '0%';
+            return;
+        }
+
         const progress = (this.video.currentTime / this.video.duration) * 100;
         this.progress.style.width = `${progress}%`;
     }
     
     setProgress(e) {
+        if (!Number.isFinite(this.video.duration) || this.video.duration <= 0) {
+            return;
+        }
+
         const rect = this.progressBar.getBoundingClientRect();
         const pos = (e.clientX - rect.left) / rect.width;
         this.video.currentTime = pos * this.video.duration;
@@ -193,11 +203,16 @@ class FuturisticPlayer {
     
     updateTimeDisplay() {
         const current = this.formatTime(this.video.currentTime);
-        const duration = this.formatTime(this.video.duration);
+        const durationValue = Number.isFinite(this.video.duration) ? this.video.duration : 0;
+        const duration = this.formatTime(durationValue);
         this.timeDisplay.textContent = `${current} / ${duration}`;
     }
     
     formatTime(seconds) {
+        if (!Number.isFinite(seconds) || seconds < 0) {
+            return '0:00';
+        }
+
         const minutes = Math.floor(seconds / 60);
         seconds = Math.floor(seconds % 60);
         return `${minutes}:${seconds.toString().padStart(2, '0')}`;
